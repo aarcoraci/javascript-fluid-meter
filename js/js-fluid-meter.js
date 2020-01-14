@@ -6,6 +6,7 @@ FluidMeter = function () {
   var dt = null;
 
   var options = {
+    drawShadow: true,
     drawText: true,
     drawPercentageSign: true,
     drawBubbles: true,
@@ -90,6 +91,18 @@ FluidMeter = function () {
     canvas.imageSmoothingEnabled = true;
     context = canvas.getContext("2d");
     targetContainer.appendChild(canvas);
+
+    // shadow is not required  to be on the draw loop
+    //#region shadow
+    if (options.drawShadow) {
+      context.save();
+      context.fillStyle = "rgba(0, 0, 0, 0.2)";
+      context.filter = "blur(4.5px)";
+      context.arc(options.size / 2, options.size / 2, getMeterRadius() / 2, 0, 2 * Math.PI);
+      context.fill();
+      context.restore();
+    }
+    //#endregion
   }
 
   /**
@@ -111,7 +124,6 @@ FluidMeter = function () {
   }
 
   function drawMeterBackground() {
-
     context.save();
     context.fillStyle = options.backgroundColor;
     context.beginPath();
@@ -303,6 +315,7 @@ FluidMeter = function () {
       fillPercentage = env.fillPercentage;
 
       if (env.options) {
+        options.drawShadow = env.options.drawShadow === false ? false : true;
         options.size = env.options.size;
         options.drawBubbles = env.options.drawBubbles === false ? false : true;
         options.borderWidth = env.options.borderWidth || options.borderWidth;
