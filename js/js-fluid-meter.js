@@ -96,9 +96,10 @@ FluidMeter = function () {
     //#region shadow
     if (options.drawShadow) {
       context.save();
-      context.fillStyle = "rgba(0, 0, 0, 0.2)";
-      context.filter = "blur(4.5px)";
+      context.beginPath();
+      context.filter = "drop-shadow(0px 4px 6px rgba(0,0,0,0.1))";
       context.arc(options.size / 2, options.size / 2, getMeterRadius() / 2, 0, 2 * Math.PI);
+      context.closePath();
       context.fill();
       context.restore();
     }
@@ -128,6 +129,7 @@ FluidMeter = function () {
     context.fillStyle = options.backgroundColor;
     context.beginPath();
     context.arc(options.size / 2, options.size / 2, getMeterRadius() / 2 - options.borderWidth, 0, 2 * Math.PI);
+    context.closePath();
     context.fill();
     context.restore();
   }
@@ -138,6 +140,7 @@ FluidMeter = function () {
     context.strokeStyle = options.foregroundColor;
     context.beginPath();
     context.arc(options.size / 2, options.size / 2, getMeterRadius() / 2 - options.borderWidth / 2, 0, 2 * Math.PI);
+    context.closePath();
     context.stroke();
     context.restore();
   }
@@ -270,23 +273,14 @@ FluidMeter = function () {
   function drawText() {
 
     var text = options.drawPercentageSign ?
-      fillPercentage + "%" : fillPercentage;
-
-    context.save();
-    context.font = getFontSize();
-    context.filter = 'blur(5px)';
-    context.fillStyle = "rgba(0, 0, 0, 0.5)";
-    context.textAlign = "center";
-    context.textBaseline = 'middle';
-    context.fillText(text, options.size / 2, options.size / 2);
-    context.restore();
-
+      currentFillPercentage.toFixed(0) + "%" : currentFillPercentage.toFixed(0);
 
     context.save();
     context.font = getFontSize();
     context.fillStyle = options.fontFillStyle;
     context.textAlign = "center";
     context.textBaseline = 'middle';
+    context.filter = "drop-shadow(0px 0px 5px rgba(0,0,0,0.4))"
     context.fillText(text, options.size / 2, options.size / 2);
     context.restore();
   }
