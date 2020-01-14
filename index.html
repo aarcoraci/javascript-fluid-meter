@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+  <script src="./js/js-fluid-meter.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="fluid-meter"></div>
+  <div id="fluid-meter-2"></div>
+
+  <div>
+    <input type="text" id="percentage" type="number" value="50">
+    <button id="submit-percentage">submit</button>
+  </div>
+  <script>
+    var fm = new FluidMeter();
+    fm.init({
+      targetContainer: document.getElementById("fluid-meter"),
+      fillPercentage: 0,
+      options: {
+        fontFamily: "Raleway",
+        drawPercentageSign: false,
+        drawBubbles: true,
+        size: 300,
+        borderWidth: 15,
+        backgroundColor: "#e2e2e2",
+        foregroundColor: "#fafafa",
+        foregroundFluidLayer: {
+          fillStyle: "purple",
+          angularSpeed: 100,
+          maxAmplitude: 12,
+          frequency: 30,
+          horizontalSpeed: -150
+        },
+        backgroundFluidLayer: {
+          fillStyle: "pink",
+          angularSpeed: 100,
+          maxAmplitude: 9,
+          frequency: 30,
+          horizontalSpeed: 150
+        }
+      }
+    });
+
+
+    window.onload = function () {
+      document.getElementById("submit-percentage").onclick = function () {
+        fm.setPercentage(Number(document.getElementById('percentage').value))
+      }
+    };
+  </script>
+</body>
+
+</html>
