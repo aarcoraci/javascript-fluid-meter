@@ -292,6 +292,9 @@ FluidMeter = function () {
   }
 
   //#region helper methods
+  function clamp(number, min, max) {
+    return Math.min(Math.max(number, min), max);
+  };
   function getMeterRadius() {
     return options.size * 0.9;
   }
@@ -312,7 +315,7 @@ FluidMeter = function () {
         throw "empty or invalid container";
 
       targetContainer = env.targetContainer;
-      fillPercentage = env.fillPercentage;
+      fillPercentage = clamp(env.fillPercentage, 0, 100);
 
       if (env.options) {
         options.drawShadow = env.options.drawShadow === false ? false : true;
@@ -355,7 +358,8 @@ FluidMeter = function () {
       draw();
     },
     setPercentage(percentage) {
-      fillPercentage = percentage;
+
+      fillPercentage = clamp(percentage, 0, 100);
     }
   }
 };
