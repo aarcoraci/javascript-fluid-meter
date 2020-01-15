@@ -1,4 +1,4 @@
-FluidMeter = function () {
+function FluidMeter() {
   var context;
   var targetContainer;
 
