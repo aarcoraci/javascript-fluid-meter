@@ -1,8 +1,15 @@
 # javascript-fluid-meter
 
+### examples
+https://codepen.io/aarcoraci/pen/abzjaOW
+
+
 ![Image Example](https://raw.githubusercontent.com/aarcoraci/javascript-fluid-meter/master/fluid-meter.gif)
 
-I've been playing with canvas for some time now and from time to time I do small projects just to practice.
+***
+
+### about 
+I've been playing with **canvas** for some time now and from time to time I do small projects just to practice.
 
 This library (aimed to be used on old browsers) renders a percentage meter as a bowl (?) with certain amount of fluid.
 
@@ -10,7 +17,7 @@ This library (aimed to be used on old browsers) renders a percentage meter as a 
 download the js-fluid-meter.js and add it to your project or page
 
 ### usage
-create as many instances as you want
+create as many instances as you want. Notice the target container **requires an id**
 ``` javascript
   var fm = new FluidMeter();
     fm.init({
@@ -43,7 +50,3 @@ create as many instances as you want
 ```
 
 ***
- 
-
-### examples
-https://codepen.io/aarcoraci/pen/abzjaOW
