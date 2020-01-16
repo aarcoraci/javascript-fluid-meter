@@ -1,3 +1,10 @@
+/**
+ * Javascript Fluid Meter
+ * by Angel Arcoraci
+ * https://github.com/aarcoraci
+ * 
+ * MIT License
+ */
 function FluidMeter() {
   var context;
   var targetContainer;
