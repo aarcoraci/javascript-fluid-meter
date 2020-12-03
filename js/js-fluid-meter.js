@@ -122,7 +122,7 @@ function FluidMeter() {
     time = now;
 
     requestAnimationFrame(draw);
-    context.clearRect(0, 0, options.width, options.height);
+    context.clearRect(0, 0, options.size, options.size);
     drawMeterBackground();
     drawFluid(dt);
     if (options.drawText) {
